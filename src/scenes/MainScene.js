@@ -4,15 +4,53 @@ import { Container, Title, Content, Footer, FooterTab, Button, Left, Right, Body
 Card, CardItem, Thumbnail, Fab } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from './../components/HeaderApp'
+import CardProduct from './../components/CardProduct'
 
 class MainScene extends Component{
   
   constructor(props){
     super(props)
-    this.state = {text: ''};
+    this.state = {productos: []};
   }
 
+  componentDidMount(){
+    this.setState({productos: this.cards()});
+  }
 
+  cards(){
+    let productos = [{
+      nombre: 'Producto 1',
+      descripcion: 'Descripcion 1',
+      tipo: '1',
+      stock: '10',
+      precio: '10'
+    },{
+      nombre: 'Producto 2',
+      descripcion: 'Descripcion 2',
+      tipo: '1',
+      stock: '20',
+      precio: '15'
+    },{
+      nombre: 'Producto 3',
+      descripcion: 'Descripcion 3',
+      tipo: '2',
+      stock: '30',
+      precio: '10'
+    },{
+      nombre: 'Producto 4',
+      descripcion: 'Descripcion 4',
+      tipo: '2',
+      stock: '20',
+      precio: '30'
+    },{
+      nombre: 'Producto 5',
+      descripcion: 'Descripcion 5',
+      tipo: '2',
+      stock: '10',
+      precio: '40'
+    }]
+    return productos;
+  }
 
   onPress(nombre){
     //Actions.pop();
@@ -24,139 +62,18 @@ class MainScene extends Component{
   } 
 
   render(){
-    const uri = "https://facebook.github.io/react-native/docs/assets/favicon.png";
+    let productos = this.state.productos===null? null : this.state.productos.map((producto, index)=>
+      <CardProduct key={index} producto={producto}/>
+    );
     return (
       <Container>
-        <HeaderApp label={'Plaza Points'} onPress={this.onPress} />
+        <HeaderApp title={'Plaza Points'} cart />
         <Content>
-          <Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card><Card>
-            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
-              <Body>
-                <Text>
-                   Producto
-                </Text>
-              </Body>
-              <Right>
-                <Thumbnail source={{uri: uri}} />
-              </Right>
-            </CardItem>
-          </Card>
+          {productos}
         </Content>
-        <Fab
-          active={this.state.active}
-          direction="up"
-          containerStyle={{ }}
-          position="bottomRight"
-          >
-          <Icon name="share" />
-        </Fab>
       </Container>     
     )
   }
 }
 
 export default MainScene
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  header: {
-    flex: 1, 
-    backgroundColor: '#333', 
-    justifyContent: 'center', 
-    alignItems: 'center'
-  },
-  body: {
-    flex: 9, 
-    backgroundColor: '#fff'
-  }
-});

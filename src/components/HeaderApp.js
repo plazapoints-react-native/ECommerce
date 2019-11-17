@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, ScrollView, Image, TouchableOpacity, TextInput } from 'react-native';
-import { Container, Header, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text } from 'native-base';
+import { Header, Title, Button, Left, Right, Body, Icon } from 'native-base';
+import { Actions } from 'react-native-router-flux';
 
 class HeaderApp extends Component{
 
@@ -10,24 +10,28 @@ class HeaderApp extends Component{
   }
 
   onBack(){
-    this.props.onPress('Manuel');
+    Actions.pop();
   }
 
   render(){
     return (
       <Header>
         <Left>
-          <Button transparent onPress={this.onBack}>
-            <Icon name='arrow-back' />
-          </Button>
+          {this.props.pop &&
+            <Button transparent onPress={this.onBack}>
+              <Icon name='arrow-back' />
+            </Button>
+          }
         </Left>
         <Body>
-          <Title>{this.props.label}</Title>
+          <Title>{this.props.title}</Title>
         </Body>
         <Right>
-          <Button transparent>
-            <Icon name='cart' />
-          </Button>
+          {this.props.cart &&
+            <Button transparent>
+              <Icon name='cart' />
+            </Button>
+          }
         </Right>
       </Header>
     )
