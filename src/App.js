@@ -9,6 +9,7 @@ import MainScene from './scenes/MainScene'
 import ViewExample from './examples/ViewExample'
 import CameraScene from './scenes/CameraScene'
 import MapsScene from './scenes/MapsScene'
+import WebViewScene from './scenes/WebViewScene'
 import ecommerceredux from './reducers';
 import { createStore } from 'redux';
 
@@ -24,7 +25,8 @@ export default class App extends Component {
           <Scene key="main" component={()=><MainScene store={store} />} hideNavBar />
           <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar/>
           <Scene key="camera" component={()=><CameraScene store={store} />} hideNavBar />
-          <Scene key="maps" component={()=><MapsScene store={store} />} hideNavBar initial/>
+          <Scene key="maps" component={()=><MapsScene store={store} />} hideNavBar />
+          <Scene key="webview" component={()=><WebViewScene store={store} />} hideNavBar initial/>
         </Stack>
       </Router>
       </StyleProvider>

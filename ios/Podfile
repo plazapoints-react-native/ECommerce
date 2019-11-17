@@ -39,6 +39,8 @@ target 'ECommerce' do
   pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
   pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
 end
 
 post_install do |installer|
