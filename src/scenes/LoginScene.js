@@ -6,10 +6,13 @@ class LoginScene extends Component{
   
   constructor(props){
     super(props)
+    this.store = this.props.store;
+    this.onPress = this.onPress.bind(this);
   }
 
   onPress(){
-    Actions.main({nombre: 'Manuel'});
+    this.store.dispatch({ type: 'NAME', data: 'Vic'});
+    Actions.main();
   } 
 
   render(){

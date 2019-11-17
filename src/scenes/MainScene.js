@@ -10,6 +10,7 @@ class MainScene extends Component{
   
   constructor(props){
     super(props)
+    this.store = this.props.store;
     this.state = {productos: []};
   }
 
@@ -53,8 +54,7 @@ class MainScene extends Component{
   }
 
   onPress(nombre){
-    //Actions.pop();
-    Alert.alert(nombre);
+    Actions.viewexample();
   } 
 
   onActualizar(){
@@ -69,6 +69,14 @@ class MainScene extends Component{
       <Container>
         <HeaderApp title={'Plaza Points'} cart />
         <Content>
+          <Text>
+          {this.store.getState().name}
+          </Text>
+          <Button onPress={this.onPress}>
+            <Text>
+              Ok
+            </Text>
+          </Button>
           {productos}
         </Content>
       </Container>     

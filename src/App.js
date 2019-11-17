@@ -6,7 +6,11 @@ import getTheme from './themes/components';
 import ecommerce from './themes/variables/ecommerce';
 import LoginScene from './scenes/LoginScene'
 import MainScene from './scenes/MainScene'
-import AsyncStorageExample from './examples/AsyncStorageExample'
+import ViewExample from './examples/ViewExample'
+import ecommerceredux from './reducers';
+import { createStore } from 'redux';
+
+let store = createStore(ecommerceredux);
 
 export default class App extends Component {
   render() {
@@ -14,9 +18,9 @@ export default class App extends Component {
       <StyleProvider style={getTheme(ecommerce)}>
       <Router>
         <Stack key="root">
-          <Scene key="login" component={LoginScene} hideNavBar/>
-          <Scene key="main" component={MainScene}  hideNavBar/>
-          <Scene key="viewexample" component={AsyncStorageExample} initial hideNavBar/>
+          <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar initial/>
+          <Scene key="main" component={()=><MainScene store={store} />} hideNavBar />
+          <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar/>
         </Stack>
       </Router>
       </StyleProvider>
