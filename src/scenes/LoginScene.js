@@ -9,7 +9,7 @@ class LoginScene extends Component{
   }
 
   onPress(){
-    Actions.main();
+    Actions.main({nombre: 'Manuel'});
   } 
 
   render(){

@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, TouchableOpacity, TextInput } from 'react-native';
+import { StyleSheet, View, ScrollView, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Container, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text,
+Card, CardItem, Thumbnail, Fab } from 'native-base';
+import { Actions } from 'react-native-router-flux';
+import HeaderApp from './../components/HeaderApp'
 
 class MainScene extends Component{
   
@@ -8,26 +12,133 @@ class MainScene extends Component{
     this.state = {text: ''};
   }
 
+
+
+  onPress(nombre){
+    //Actions.pop();
+    Alert.alert(nombre);
+  } 
+
+  onActualizar(){
+    Actions.refresh({nombre: 'Juan'});
+  } 
+
   render(){
+    const uri = "https://facebook.github.io/react-native/docs/assets/favicon.png";
     return (
-      <View style={styles.container} >
-        <View style={styles.header}>
-          <Text style={{fontSize: 15, color: '#fff'}}>App E-commerce</Text>
-        </View>
-        <View style={styles.body}>
-          <ScrollView>
-            <View style={{margin: 20, flexDirection: 'row', 
-            borderWidth: 1, borderColor: '#333', borderRadius: 4}}>
-              <View style={{flex: 3, padding: 10}}>
-                <Text>Hola mundo sdkj hdsfhsdjkf kdshfk hdskf hdsjkfhkdshf kjdshkjf hdskfh dksh dksjhf kjdshf kdshkf dsjkfdsjkhfdks </Text>
-              </View>
-              <View style={{flex: 2, padding: 10, alignItems: 'center'}}>
-                <Image style={{height: 80, width: 80}} source={require('./../assets/logo-plp.png')}/>
-              </View>
-            </View>
-          </ScrollView>
-        </View>
-      </View>
+      <Container>
+        <HeaderApp label={'Plaza Points'} onPress={this.onPress} />
+        <Content>
+          <Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card><Card>
+            <CardItem button onPress={() =>{Alert.alert('Hola')}}>
+              <Body>
+                <Text>
+                   Producto
+                </Text>
+              </Body>
+              <Right>
+                <Thumbnail source={{uri: uri}} />
+              </Right>
+            </CardItem>
+          </Card>
+        </Content>
+        <Fab
+          active={this.state.active}
+          direction="up"
+          containerStyle={{ }}
+          position="bottomRight"
+          >
+          <Icon name="share" />
+        </Fab>
+      </Container>     
     )
   }
 }
