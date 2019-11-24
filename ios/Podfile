@@ -44,6 +44,11 @@ target 'ECommerce' do
   pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
   pod 'GoogleSignIn', '~> 4.4.0'
 
+  pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
+  pod 'FBSDKCoreKit', '~> 4.42.0'
+  pod 'FBSDKLoginKit', '~> 4.42.0'
+  pod 'FBSDKShareKit', '~> 4.42.0'
+
 end
 
 post_install do |installer|

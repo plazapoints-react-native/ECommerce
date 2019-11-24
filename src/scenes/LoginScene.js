@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Scene, Router, Actions, Stack  } from 'react-native-router-flux';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
-//import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 
 class LoginScene extends Component{
   
@@ -37,7 +37,7 @@ class LoginScene extends Component{
   } 
 
   onPressFacebook(){
-    /*LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
+    LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
       function(result) {
         if (result.isCancelled) {
           this.setState({response: 'Login was cancelled'});
@@ -75,7 +75,7 @@ class LoginScene extends Component{
       function(error) {
         this.setState({response: 'Login failed with error: ' + error});
       }.bind(this)
-    );*/
+    );
   } 
 
   componentDidMount () {

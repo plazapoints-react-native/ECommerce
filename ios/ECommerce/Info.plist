@@ -30,6 +30,12 @@
 				<string>com.googleusercontent.apps.773390855103-p5503724m3k8ksp7pvs8oom0eidi4npb</string>
 			</array>
 		</dict>
+		<dict>
+	      <key>CFBundleURLSchemes</key>
+	      <array>
+	        <string>fb424764271530227</string>
+	      </array>
+	    </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -91,5 +97,16 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+    <key>FacebookAppID</key>
+    <string>424764271530227</string>
+    <key>FacebookDisplayName</key>
+    <string>ECommerce</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>fbapi</string>
+        <string>fb-messenger-share-api</string>
+        <string>fbauth2</string>
+        <string>fbshareextension</string>
+    </array>
 </dict>
 </plist>
