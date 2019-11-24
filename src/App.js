@@ -10,6 +10,7 @@ import ViewExample from './examples/ViewExample'
 import CameraScene from './scenes/CameraScene'
 import MapsScene from './scenes/MapsScene'
 import WebViewScene from './scenes/WebViewScene'
+import AnimatedScene from './scenes/AnimatedScene'
 import ecommerceredux from './reducers';
 import { createStore } from 'redux';
 
@@ -21,12 +22,13 @@ export default class App extends Component {
       <StyleProvider style={getTheme(ecommerce)}>
       <Router>
         <Stack key="root">
-          <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar initial/>
+          <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar />
           <Scene key="main" component={()=><MainScene store={store} />} hideNavBar />
           <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar />
           <Scene key="camera" component={()=><CameraScene store={store} />} hideNavBar />
           <Scene key="maps" component={()=><MapsScene store={store} />} hideNavBar />
           <Scene key="webview" component={()=><WebViewScene store={store} />} hideNavBar />
+          <Scene key="animated" component={()=><AnimatedScene store={store} />} hideNavBar initial/>
         </Stack>
       </Router>
       </StyleProvider>
