@@ -23,12 +23,12 @@ export default class App extends Component {
       <Router>
         <Stack key="root">
           <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar />
-          <Scene key="main" component={()=><MainScene store={store} />} hideNavBar />
+          <Scene key="main" component={()=><MainScene store={store} />} hideNavBar initial/>
           <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar />
           <Scene key="camera" component={()=><CameraScene store={store} />} hideNavBar />
           <Scene key="maps" component={()=><MapsScene store={store} />} hideNavBar />
           <Scene key="webview" component={()=><WebViewScene store={store} />} hideNavBar />
-          <Scene key="animated" component={()=><AnimatedScene store={store} />} hideNavBar initial/>
+          <Scene key="animated" component={()=><AnimatedScene store={store} />} hideNavBar />
         </Stack>
       </Router>
       </StyleProvider>

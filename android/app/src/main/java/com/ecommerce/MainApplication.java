@@ -3,6 +3,8 @@ package com.ecommerce;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.invertase.firebase.RNFirebasePackage;
+import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.reactnativecommunity.webview.RNCWebViewPackage;
@@ -41,6 +43,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNFirebasePackage(),
+            new RNFirebaseDatabasePackage(),
             new FBSDKPackage(mCallbackManager),
             new RNGoogleSigninPackage(),
             new RNCWebViewPackage(),

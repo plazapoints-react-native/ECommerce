@@ -49,6 +49,11 @@ target 'ECommerce' do
   pod 'FBSDKLoginKit', '~> 4.42.0'
   pod 'FBSDKShareKit', '~> 4.42.0'
 
+  pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
+  # Pods for ExampleReactNativeFirebase
+  pod 'Firebase/Core', '~> 6.3.0'
+  pod 'Firebase/Database', '~> 6.3.0'
+
 end
 
 post_install do |installer|
