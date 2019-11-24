@@ -21,12 +21,12 @@ export default class App extends Component {
       <StyleProvider style={getTheme(ecommerce)}>
       <Router>
         <Stack key="root">
-          <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar/>
+          <Scene key="login" component={()=><LoginScene store={store} />} hideNavBar initial/>
           <Scene key="main" component={()=><MainScene store={store} />} hideNavBar />
-          <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar/>
+          <Scene key="viewexample" component={()=><ViewExample store={store} />} hideNavBar />
           <Scene key="camera" component={()=><CameraScene store={store} />} hideNavBar />
           <Scene key="maps" component={()=><MapsScene store={store} />} hideNavBar />
-          <Scene key="webview" component={()=><WebViewScene store={store} />} hideNavBar initial/>
+          <Scene key="webview" component={()=><WebViewScene store={store} />} hideNavBar />
         </Stack>
       </Router>
       </StyleProvider>

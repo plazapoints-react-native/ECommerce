@@ -41,6 +41,9 @@ target 'ECommerce' do
 
   pod 'react-native-webview', :path => '../node_modules/react-native-webview'
 
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+  pod 'GoogleSignIn', '~> 4.4.0'
+
 end
 
 post_install do |installer|
