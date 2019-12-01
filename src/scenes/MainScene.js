@@ -120,6 +120,7 @@ class MainScene extends Component{
       <Container>
         <HeaderApp title={'Plaza Points'} cart />
         <Content>
+          <Text>{this.props.id}</Text>
           <Text>
           {this.store.getState().name}
           </Text>

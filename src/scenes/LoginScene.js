@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Scene, Router, Actions, Stack  } from 'react-native-router-flux';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
+import firebase from 'react-native-firebase';
 
 class LoginScene extends Component{
   
@@ -82,6 +83,21 @@ class LoginScene extends Component{
     GoogleSignin.configure({
       webClientId: '773390855103-lcr75klbbacbsb1pbes3vhv75c6p5e0l.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
       //iosClientId: '<FROM DEVELOPER CONSOLE>', // [iOS] optional, if you want to specify the client ID of type iOS (otherwise, it is taken from GoogleService-Info.plist)
+    });
+    firebase.messaging().requestPermission()
+    .then(() => {
+      // User has authorised  
+    })
+    .catch(error => {
+      // User has rejected permissions  
+    });
+    firebase.messaging().getToken().then(fcmToken => {
+      if (fcmToken) {
+        console.info('Hola')
+        console.info(fcmToken)
+      } else {
+      // user doesn't have a device token yet
+      }
     });
   }
 

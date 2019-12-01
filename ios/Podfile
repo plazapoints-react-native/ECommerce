@@ -53,6 +53,7 @@ target 'ECommerce' do
   # Pods for ExampleReactNativeFirebase
   pod 'Firebase/Core', '~> 6.3.0'
   pod 'Firebase/Database', '~> 6.3.0'
+  pod 'Firebase/Messaging', '~> 6.3.0'
 
 end
 
