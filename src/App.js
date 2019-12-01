@@ -11,6 +11,7 @@ import CameraScene from './scenes/CameraScene'
 import MapsScene from './scenes/MapsScene'
 import WebViewScene from './scenes/WebViewScene'
 import AnimatedScene from './scenes/AnimatedScene'
+import ProductoScene from './scenes/ProductoScene'
 import crossroads from 'crossroads'
 import firebase from 'react-native-firebase';
 import ecommerceredux from './reducers';
@@ -47,6 +48,7 @@ export default class App extends Component {
         <Stack key="root">
           <Scene key="login" component={(props)=><LoginScene {...props} store={store} />} hideNavBar initial/>
           <Scene key="main" component={(props)=><MainScene {...props} store={store} />} hideNavBar />
+          <Scene key="producto" component={(props)=><ProductoScene {...props} store={store} />} hideNavBar />
           <Scene key="viewexample" component={(props)=><ViewExample {...props} store={store} />} hideNavBar />
           <Scene key="camera" component={(props)=><CameraScene {...props} store={store} />} hideNavBar />
           <Scene key="maps" component={(props)=><MapsScene {...props} store={store} />} hideNavBar />

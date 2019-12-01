@@ -45,15 +45,16 @@ target 'ECommerce' do
   pod 'GoogleSignIn', '~> 4.4.0'
 
   pod 'react-native-fbsdk', :path => '../node_modules/react-native-fbsdk'
-  pod 'FBSDKCoreKit', '~> 4.42.0'
-  pod 'FBSDKLoginKit', '~> 4.42.0'
-  pod 'FBSDKShareKit', '~> 4.42.0'
+  pod 'FBSDKCoreKit', '~> 5.6.0'
+  pod 'FBSDKLoginKit', '~> 5.6.0'
+  pod 'FBSDKShareKit', '~> 5.6.0'
 
   pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
   # Pods for ExampleReactNativeFirebase
   pod 'Firebase/Core', '~> 6.3.0'
   pod 'Firebase/Database', '~> 6.3.0'
   pod 'Firebase/Messaging', '~> 6.3.0'
+  pod 'Firebase/DynamicLinks', '~> 6.3.0'
 
 end
 

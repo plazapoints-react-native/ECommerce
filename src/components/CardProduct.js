@@ -11,7 +11,7 @@ class CardProduct extends Component{
     const uri = "https://facebook.github.io/react-native/docs/assets/favicon.png";
     return (
       <Card>
-        <CardItem button onPress={this.props.onPress}>
+        <CardItem button onPress={()=>this.props.onPress(this.props.producto)}>
           <Body>
             <Text>
                {this.props.producto.nombre} {this.props.producto.descripcion} 

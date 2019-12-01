@@ -20,7 +20,10 @@ class LoginScene extends Component{
   async onPress(){
     try {
       const userInfo = await GoogleSignin.signIn();
-      this.setState({ response: 'Name ' + userInfo.user.name + ' Email ' + userInfo.user.email });
+      //this.setState({ response: 'Name ' + userInfo.user.name + ' Email ' + userInfo.user.email });
+      this.store.dispatch({ type: 'NAME', data: userInfo.user.name});
+      this.store.dispatch({ type: 'EMAIL', data: userInfo.user.email});
+      Actions.main();
     } catch (error) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -32,13 +35,10 @@ class LoginScene extends Component{
         // some other error happened
       }
     }
-   /*this.store.dispatch({ type: 'NAME', data: 'Vic'});
-    this.store.dispatch({ type: 'EMAIL', data: 'essenwanger@gmail.com'});
-    Actions.main();*/
   } 
 
   onPressFacebook(){
-    LoginManager.logInWithReadPermissions(['public_profile', 'email']).then(
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function(result) {
         if (result.isCancelled) {
           this.setState({response: 'Login was cancelled'});
@@ -49,7 +49,10 @@ class LoginScene extends Component{
                 if (error) {
                   this.setState({response: 'Error data' + error});
                 } else {
-                  this.setState({response: 'Name ' + result.name + ' Email ' + result.email});
+                  //this.setState({response: 'Name ' + result.name + ' Email ' + result.email});
+                  this.store.dispatch({ type: 'NAME', data: result.name});
+                  this.store.dispatch({ type: 'EMAIL', data: result.email});
+                  Actions.main();
                 }
               })
               const profileRequestParams = {
@@ -93,8 +96,7 @@ class LoginScene extends Component{
     });
     firebase.messaging().getToken().then(fcmToken => {
       if (fcmToken) {
-        console.info('Hola')
-        console.info(fcmToken)
+        this.store.dispatch({ type: 'TOKEN', data: fcmToken});
       } else {
       // user doesn't have a device token yet
       }

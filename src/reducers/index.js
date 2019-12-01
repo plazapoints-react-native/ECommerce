@@ -11,6 +11,11 @@ export default (state = {}, action) =>{
       ...state,
       email: action.data
     };
+  case 'TOKEN':
+    return {
+      ...state,
+      token: action.data
+    };
   default:
     return state;
   }

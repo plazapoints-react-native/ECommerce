@@ -16,119 +16,34 @@ class MainScene extends Component{
   }
 
   componentDidMount(){
-    /*firebase.database().ref('productos/').once('value').then((snapshot) => {
-      this.setState({productos: snapshot.val()});
-    });*/
-    firebase.database().ref('productos/').on('value', (snapshot) => {
-      this.setState({productos: snapshot.val()});
+    let email = this.store.getState().email;
+    let token = this.store.getState().token;
+    if(token !==null){
+      firebase.database().ref('usuarios/'+token).update({token: token, email: email});
+    }
+    firebase.database().ref('productos/').once('value', (snapshot) => {
+      let productos=[];
+      snapshot.forEach(function(data) {
+        let producto = data.val();
+        producto.key = data.key;
+        productos.push(producto);
+      });
+      this.setState({productos: productos});
     });
-    //this.setState({productos: this.cards()});
   }
 
-  onPress(){
-    /*firebase.database().ref('productos/').set(
-      [{
-      nombre: 'Producto 1',
-      descripcion: 'Descripcion 1',
-      tipo: '1',
-      stock: '10',
-      precio: '10'
-    },{
-      nombre: 'Producto 2',
-      descripcion: 'Descripcion 2',
-      tipo: '1',
-      stock: '20',
-      precio: '15'
-    },{
-      nombre: 'Producto 3',
-      descripcion: 'Descripcion 3',
-      tipo: '2',
-      stock: '30',
-      precio: '10'
-    },{
-      nombre: 'Producto 4',
-      descripcion: 'Descripcion 4',
-      tipo: '2',
-      stock: '20',
-      precio: '30'
-    },{
-      nombre: 'Producto 5',
-      descripcion: 'Descripcion 5',
-      tipo: '2',
-      stock: '10',
-      precio: '40'
-    }]
-    );*/
-    let key = firebase.database().ref().child('productos/').push().key;
-    firebase.database().ref('productos/'+key).set({
-      nombre: 'Producto 1',
-      descripcion: 'Descripcion 1',
-      tipo: '1',
-      stock: '10',
-      precio: '10'
-    });
-    key = firebase.database().ref().child('productos/').push().key;
-    firebase.database().ref('productos/'+key).set({
-      nombre: 'Producto 2',
-      descripcion: 'Descripcion 2',
-      tipo: '1',
-      stock: '20',
-      precio: '15'
-    });
-    key = firebase.database().ref().child('productos/').push().key;
-    firebase.database().ref('productos/'+key).set({
-      nombre: 'Producto 3',
-      descripcion: 'Descripcion 3',
-      tipo: '2',
-      stock: '30',
-      precio: '10'
-    });
-    key = firebase.database().ref().child('productos/').push().key;
-    firebase.database().ref('productos/'+key).set({
-      nombre: 'Producto 4',
-      descripcion: 'Descripcion 4',
-      tipo: '2',
-      stock: '20',
-      precio: '30'
-    });
-    key = firebase.database().ref().child('productos/').push().key;
-    firebase.database().ref('productos/'+key).set({
-      nombre: 'Producto 5',
-      descripcion: 'Descripcion 5',
-      tipo: '2',
-      stock: '10',
-      precio: '40'
-    });
-    //Actions.viewexample();
-  } 
-
-  onActualizar(){
-    Actions.refresh({nombre: 'Juan'});
+  onPress(producto){
+    Actions.producto({producto : producto});
   } 
 
   render(){
-    /*let productos = <Spinner />;
-    if(this.state.productos!==null){
-      productos = this.state.productos.map((producto, index)=>
-        <CardProduct key={index} producto={producto}/>
-      );
-    }*/
-    let productos = this.state.productos===null ? <Spinner color={'#333'} /> : Object.keys(this.state.productos).map((key, index)=>
-      <CardProduct key={index} producto={this.state.productos[key]}/>
+    let productos = this.state.productos===null ? <Spinner color={'#333'} /> : this.state.productos.map((producto, index)=>
+      <CardProduct key={index} producto={producto} onPress={this.onPress}/>
     );
     return (
       <Container>
         <HeaderApp title={'Plaza Points'} cart />
         <Content>
-          <Text>{this.props.id}</Text>
-          <Text>
-          {this.store.getState().name}
-          </Text>
-          <Button onPress={this.onPress}>
-            <Text>
-              Ok
-            </Text>
-          </Button>
           {productos}
         </Content>
       </Container>     
