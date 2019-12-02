@@ -13,11 +13,11 @@ class LoginScene extends Component{
     this.state = {
       response: ''
     };
-    this.onPress = this.onPress.bind(this);
+    this.onPressGoogle = this.onPressGoogle.bind(this);
     this.onPressFacebook = this.onPressFacebook.bind(this);
   }
 
-  async onPress(){
+  async onPressGoogle(){
     try {
       const userInfo = await GoogleSignin.signIn();
       //this.setState({ response: 'Name ' + userInfo.user.name + ' Email ' + userInfo.user.email });
@@ -115,7 +115,7 @@ class LoginScene extends Component{
               <Text style={styles.buttonTextFacebook}>Facebook Sign In</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity onPress={this.onPress}>
+          <TouchableOpacity onPress={this.onPressGoogle}>
             <View style={styles.buttonGoogle}>
               <Text style={styles.buttonTextGoogle}>Google Sign In</Text>
             </View>

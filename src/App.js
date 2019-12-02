@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import { Scene, Router, Actions, Stack  } from 'react-native-router-flux';
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 import getTheme from './themes/components';
 import ecommerce from './themes/variables/ecommerce';
 import LoginScene from './scenes/LoginScene'
@@ -12,6 +12,9 @@ import MapsScene from './scenes/MapsScene'
 import WebViewScene from './scenes/WebViewScene'
 import AnimatedScene from './scenes/AnimatedScene'
 import ProductoScene from './scenes/ProductoScene'
+import CartScene from './scenes/CartScene'
+import ParallaxScene from './scenes/ParallaxScene'
+import ModalScene from './scenes/ModalScene'
 import crossroads from 'crossroads'
 import firebase from 'react-native-firebase';
 import ecommerceredux from './reducers';
@@ -44,9 +47,10 @@ export default class App extends Component {
   render() {
     return (
       <StyleProvider style={getTheme(ecommerce)}>
+      <Root>
       <Router>
         <Stack key="root">
-          <Scene key="login" component={(props)=><LoginScene {...props} store={store} />} hideNavBar initial/>
+          <Scene key="login" component={(props)=><LoginScene {...props} store={store} />} hideNavBar />
           <Scene key="main" component={(props)=><MainScene {...props} store={store} />} hideNavBar />
           <Scene key="producto" component={(props)=><ProductoScene {...props} store={store} />} hideNavBar />
           <Scene key="viewexample" component={(props)=><ViewExample {...props} store={store} />} hideNavBar />
@@ -54,8 +58,12 @@ export default class App extends Component {
           <Scene key="maps" component={(props)=><MapsScene {...props} store={store} />} hideNavBar />
           <Scene key="webview" component={(props)=><WebViewScene {...props} store={store} />} hideNavBar />
           <Scene key="animated" component={(props)=><AnimatedScene {...props} store={store} />} hideNavBar />
+          <Scene key="cart" component={(props)=><CartScene {...props} store={store} />} hideNavBar />
+          <Scene key="parallax" component={(props)=><ParallaxScene {...props} store={store} />} hideNavBar />
+          <Scene key="modal" component={(props)=><ModalScene {...props} store={store} />} hideNavBar initial/>
         </Stack>
       </Router>
+      </Root>
       </StyleProvider>
     );
   }

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, View, ScrollView, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { Container, Title, Content, Footer, FooterTab, Button, Left, Right, Body, Icon, Text,
-Card, CardItem, Thumbnail, Fab, Spinner, Form, Item, Input } from 'native-base';
+Card, CardItem, Thumbnail, Fab, Spinner, Form, Item, Input, Root, Toast } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 import HeaderApp from './../components/HeaderApp'
 import CardProduct from './../components/CardProduct'
@@ -17,12 +17,19 @@ class ProductoScene extends Component{
   }
 
   onPress(){
-    let token = this.store.getState().token;
+    /*let token = this.store.getState().token;
     if(token !==null){
       let producto = { nombre: this.props.producto.nombre, cantidad: this.state.cantidad}
       firebase.database().ref('usuarios/'+token+'/productos/'+this.props.producto.key).update(producto);
       Actions.pop();
-    }
+    }*/
+    Toast.show({
+              text: 'Wrong password!',
+              buttonText: 'Okay', 
+              duration: 3000,
+              position: 'top'
+            })
+    Actions.pop()
   } 
 
   render(){
@@ -32,18 +39,18 @@ class ProductoScene extends Component{
         <Content padder>
           <Card>
             <CardItem header>
-              <Text>{this.props.producto.nombre}</Text>
+              <Text></Text>
             </CardItem>
             <CardItem>
               <Body>
                 <Text>
-                  Descripcion: {this.props.producto.descripcion}
+                  Descripcion: 
                 </Text>
                 <Text>
-                  Precio: {this.props.producto.precio}
+                  Precio: 
                 </Text>
                 <Text>
-                  Stock: {this.props.producto.stock}
+                  Stock: 
                 </Text>
               </Body>
             </CardItem>
@@ -51,7 +58,7 @@ class ProductoScene extends Component{
               <Item>
                 <Input placeholder="Cantidad" 
                 onChangeText={(text) => this.setState({cantidad: text})}
-                value={this.state.cantidad}/>
+                value={this.state.cantidad} keyboardType={'numeric'}/>
               </Item>
             </CardItem>
          </Card>
@@ -59,7 +66,7 @@ class ProductoScene extends Component{
             <Text>Agregar</Text>
           </Button>
         </Content>
-      </Container>     
+      </Container>
     )
   }
 }

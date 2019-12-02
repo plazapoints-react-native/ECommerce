@@ -13,6 +13,10 @@ class HeaderApp extends Component{
     Actions.pop();
   }
 
+  onCart(){
+    Actions.cart();
+  }
+
   render(){
     return (
       <Header>
@@ -28,7 +32,7 @@ class HeaderApp extends Component{
         </Body>
         <Right>
           {this.props.cart &&
-            <Button transparent>
+            <Button transparent onPress={this.onCart}>
               <Icon name='cart' />
             </Button>
           }
