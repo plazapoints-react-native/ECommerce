@@ -11,7 +11,7 @@
     "crossroads": "^0.12.2",
     "native-base": "^2.13.8",
     "react": "16.8.3",
-    "react-native": "0.59.9",
+    "react-native": "0.62.3",
     "react-native-fbsdk": "^0.10.1",
     "react-native-firebase": "^5.5.6",
     "react-native-google-signin": "^2.0.0",
